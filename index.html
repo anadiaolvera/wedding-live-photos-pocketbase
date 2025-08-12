@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fotos en Vivo — Nuestra Boda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>💍 Nuestra Boda</h1>
+    <p>Comparte tus fotos en vivo. ¡Gracias por estar aquí!</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1) Conéctate</h2>
+      <label class="label">Backend URL (PocketBase):</label>
+      <input id="backendUrl" type="url" placeholder="https://tu-app.fly.dev" />
+      <button id="saveBackend">Guardar</button>
+
+      <h3>Tu nombre</h3>
+      <form id="nameForm">
+        <input id="guestName" type="text" required placeholder="Tu nombre" maxlength="40">
+        <button type="submit">Continuar</button>
+      </form>
+      <p class="hint">Al participar aceptas que tus fotos se muestren en la galería del evento.</p>
+    </section>
+
+    <section id="upload" class="card hidden">
+      <h2>2) Sube una foto</h2>
+      <input id="photoInput" type="file" accept="image/*" capture="environment">
+      <button id="sendBtn" disabled>Subir foto</button>
+      <p id="progress" class="muted"></p>
+    </section>
+
+    <section class="card">
+      <h2>Galería en vivo</h2>
+      <div id="grid" class="grid"></div>
+      <p id="empty" class="muted">Aún no hay fotos… ¡Sé el primero! 📸</p>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary>Admin (novia/organizador)</summary>
+        <div class="admin-controls">
+          <input id="adminKey" type="password" placeholder="Clave admin">
+          <button id="toggleModeration">Conectar</button>
+          <p class="muted">Podrás aprobar u ocultar fotos.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>Comparte con QR</h2>
+      <p>Pega aquí el URL público (GitHub Pages) y genera un QR.</p>
+      <input id="qrUrl" type="url" placeholder="https://tuusuario.github.io/wedding-live-photos-pocketbase/">
+      <button id="genQR">Generar QR</button>
+      <div id="qrCanvas" class="qr"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Hecho con 💛 para nuestra boda. Respeta la privacidad de los demás.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+  <script src="https://unpkg.com/pocketbase/dist/pocketbase.umd.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
